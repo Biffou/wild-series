@@ -4,9 +4,13 @@ namespace App\Controller;
 
 use App\Entity\Category;
 use App\Entity\Program;
+use App\Form\ProgramSearchType;
+use App\Form\CategoryType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Request;
+
 
 /**
  * @Route("/wild", name="wild_")
@@ -20,11 +24,22 @@ class WildController extends AbstractController
      * @Route("/", name="index")
      * @return Response A response instance
      */
-    public function index() :Response
+    public function index(Request $request) :Response
     {
+        $form = $this->createForm(ProgramSearchType::class);
+        $form->handleRequest($request);
+
         $programs = $this->getDoctrine()
             ->getRepository(Program::class)
             ->findAll();
+
+        if ($form->isSubmitted()) {
+            $data = $form->getData();
+
+            $programs = $this->getDoctrine()
+                ->getRepository(Program::class)
+                ->findBySearch($data['searchField']);
+        }
 
         if (!$programs) {
             throw $this->createNotFoundException(
@@ -34,7 +49,7 @@ class WildController extends AbstractController
 
         return $this->render(
             'wild/index.html.twig',
-            ['programs' => $programs]
+            ['programs' => $programs, 'form' => $form->createView()]
         );
     }
 
