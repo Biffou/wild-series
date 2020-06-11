@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Program{% endblock %}
+
+{% block body %}
+
+    <h1>{{ program.title }} Saison {{ season.number }}</h1>
+
+    <table class="table">
+        <tbody>
+        <tr>
+            <th>Année</th>
+            <td>{{ season.year }}</td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>{{ season.description }}</td>
+        </tr>
+        </tbody>
+    </table>
+
+        <div class="media">
+            <img class="align-self-start mr-3" src="{{program.poster}}" alt="{{ program.title }} poster">
+            <div class="media-body">
+                <h1 class="mt-0">{{ program.title }}</h1>
+                <p>{{ program.summary }}</p>
+                <p>Catégorie : {{ program.category.name }}</p>
+                {% for episode in episodes %}
+                    <ul>
+                        <li> Titre: {{ episode.title }}</li>
+                        <li> Episode n°: {{ episode.number }}</li>
+                        <li> Synopsis : {{ episode.synopsis }}</li>
+                    </ul>
+                {% endfor %}
+            </div>
+        </div>
+
+        <a href="{{ path('wild_index') }}">
+            Retour à l'accueil
+        </a>
+
+    <a href="{{ path('program_index') }}">back to list</a>
+
+    <a href="{{ path('program_edit', {'id': program.id}) }}">edit</a>
+
+    {{ include('program/_delete_form.html.twig') }}
+{% endblock %}
