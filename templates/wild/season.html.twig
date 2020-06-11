@@ -27,7 +27,8 @@
                 <p>Catégorie : {{ program.category.name }}</p>
                 {% for episode in episodes %}
                     <ul>
-                        <li> Titre: {{ episode.title }}</li>
+                        <a href=" {{ path('wild_episode', {'id': episode.id }) }}">
+                            <li> Titre: {{ episode.title }}</li></a>
                         <li> Episode n°: {{ episode.number }}</li>
                         <li> Synopsis : {{ episode.synopsis }}</li>
                     </ul>

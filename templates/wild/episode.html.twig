@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+{% block title %}Program{% endblock %}
+
+{% block body %}
+
+    <div class="media">
+        <img class="align-self-start mr-3" src="{{program.poster}}" alt="{{ program.title }} poster">
+        <div class="media-body">
+            <h1 class="mt-0">Titre de l'épisode: {{ episode.title }}</h1>
+            <p>Episode n° {{ episode.number }}</p>
+            <p>Synopsis : {{ episode.synopsis }}</p>
+            <a href="{{ path('wild_index', { 'id': program.id }) }}">Titre {{ program.title }}</a>
+            <p>Catégorie : {{ program.category.name }}</p>
+            <a href="{{ path('wild_season', { 'id': season.id }) }}">Saison {{ season.number }}</a>
+        </div>
+    </div>
+
+{% endblock %}
