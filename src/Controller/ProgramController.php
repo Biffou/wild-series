@@ -11,12 +11,12 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/program")
+ * @Route("/program", name="program_")
  */
 class ProgramController extends AbstractController
 {
     /**
-     * @Route("/", name="program_index", methods={"GET"})
+     * @Route("/", name="index", methods={"GET"})
      */
     public function index(ProgramRepository $programRepository): Response
     {
@@ -26,7 +26,7 @@ class ProgramController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="program_new", methods={"GET","POST"})
+     * @Route("/new", name="new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
     {
@@ -49,7 +49,7 @@ class ProgramController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="program_show", methods={"GET"})
+     * @Route("/{id}", name="show", methods={"GET"})
      */
     public function show(Program $program): Response
     {
@@ -59,7 +59,7 @@ class ProgramController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="program_edit", methods={"GET","POST"})
+     * @Route("/{id}/edit", name="edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Program $program): Response
     {
@@ -79,7 +79,7 @@ class ProgramController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="program_delete", methods={"DELETE"})
+     * @Route("/{id}", name="delete", methods={"DELETE"})
      */
     public function delete(Request $request, Program $program): Response
     {
