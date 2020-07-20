@@ -63,6 +63,7 @@ class Program
      */
     private $slug;
 
+
     public function __construct()
     {
         $this->seasons = new ArrayCollection();
