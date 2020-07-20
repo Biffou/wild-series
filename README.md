@@ -15,3 +15,5 @@ quete 15: https://www.loom.com/share/4b00c482f8ac4ebaa5b41f6968cbf228
 quete 16: https://www.loom.com/share/f2c9137f47484ed9a5dcd5c66269ad15
 
 quete 17: https://www.loom.com/share/b5cd2725fd2a4476ab34bf2f7a6ed1c0
+
+quete 18: https://www.loom.com/share/eca0c226802f4d87bc8235ff642e351d
